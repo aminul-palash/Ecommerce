@@ -1,0 +1,8 @@
+
+<li {% if active_link == "home" %}class="active"{% endif %}><a href="{% url 'home' %}">Home</a></li>
+<li {% if active_link == "books" %}class="active"{% endif %} ><a href="{% url 'bookmanagement:booklist' %}">Books</a></li>
+
+<li {% if active_link == "blog" %}class="active"{% endif %}><a href="{% url 'blog:bloglist' %}">Blog</a></li>
+<li ><a>Features</a></li>
+<li ><a><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+

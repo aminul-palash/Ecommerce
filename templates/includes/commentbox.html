@@ -1,0 +1,60 @@
+{% load staticfiles %}
+  <!-- Contenedor Principal -->
+<div class="comments-container">
+    <h5 class="reviews-text"></h5>
+<form method="post" class="mb-4" novalidate>
+    {% csrf_token %}
+    {% include 'includes/form.html' %}
+    
+    <button type="submit" class="btn btn-success">Post a reply</button>
+   
+  </form>
+
+<ul id="comments-list" class="comments-list">
+    {% for item in comment %}
+  <li>
+    <div class="comment-main-level">
+      <!-- Avatar -->
+      <div class="comment-avatar"><img src="{{ item.commented_by.user_profile.picture.url }}" alt=""></div>
+      <!-- Contenedor del Comentario -->
+      <div class="comment-box">
+        <div class="comment-head">
+          <h6 class="comment-name by-author"><a href="{% url 'profiles:show_self' %}">
+           {{item.commented_by|capfirst}}</a></h6>
+          <span>hace 20 minutos</span>
+          <i class="fa fa-reply"></i>
+          <i class="fa fa-heart"></i>
+        </div>
+       
+        <div class="comment-content">
+            {{ item.comment }}
+        </div>
+       
+      </div>
+    </div>
+    <!-- Respuestas de los comentarios -->
+    <ul class="comments-list reply-list">
+      <li>
+        <!-- Avatar -->
+        <div class="comment-avatar"><img src="{% static 'site/img/bl3.jpg' %}" alt=""></div>
+        <!-- Contenedor del Comentario -->
+        <div class="comment-box">
+          <div class="comment-head">
+            <h6 class="comment-name"><a href="">ServantOfAllah</a></h6>
+            <span>hace 10 minutos</span>
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+          </div>
+          <div class="comment-content">
+            Jazakallah Akhi for your Reviews
+          </div>
+        </div>
+      </li>
+
+      
+    </ul>
+  </li>
+
+  {% endfor %}
+</ul>
+</div>

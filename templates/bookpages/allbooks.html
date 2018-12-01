@@ -1,0 +1,108 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}Books {% endblock %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="books" %}
+{% endblock %}
+
+{% block container %}
+<!--
+<div class="container-fluid" style="background-color:#d8d8d854; padding: 20px;">
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Books</h4>
+        </div>
+        <div class="col-sm-6 hidden-xs text-right">
+          <nav>
+            <h5><a href="{% url 'home' %}">Home</a>&nbsp;/&nbsp;Shop</h5>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="div-margin"></div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9 col-lg-9 col-sm-push-3 booklist-wrap">
+
+      <div class="row">
+        <div class="col-md-12">
+          <form class="select-ordering" method="get">
+            <select name="orderby" class="orderby">
+              <option value="menu_order" selected="selected">Default sorting</option>
+              <option value="popularity">Sort by popularity</option>
+            </select>
+          </form>
+          <div class="layout-switcher clearfix">
+            <div class="toggle-text">
+              
+            </div>
+            <div class="toggleGrid toggle-active"><i class="fa fa-th fa-2x"></i></div>
+            <div class="toggleList"><i class="fa fa-th-list fa-2x"></i></div>
+          </div>
+          <hr class="clearfix">
+        </div>
+      </div>
+
+
+      <h4>Recently added</h4><span class="center-line"></span>
+      <div class="row ">
+          {% if not object_list %}
+           <h2>List is Empty</h2>
+        {% else %}
+        {% for book in object_list %}
+        <div class="col-md-3 col-xs-6 booklist-item">
+          <div class="item-image">
+            <a href="">
+              <img src="{{ book.image.url }}">
+            </a>
+            <div class="overlay">
+              <div class="text">
+                <a href="{% url 'bookmanagement:detail' book.id %}"><button class="info" data-toggle="modal" data-target="#modal3">details
+                </button></a>
+                <a href="#"><i class="fa fa-plus"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="book-info">
+            <a href="">
+              <a href="{% url 'bookmanagement:detail' book.id %}"><h4><span>{{ book.title }}</span></h4></a>
+            </a>
+            <a>
+              <p><span>লেখক :</span>{{ book.Author }}</p>
+            </a>
+            
+          </div>
+        </div>
+        {% endfor %}  
+        {% endif %}
+
+
+      </div>
+      <!--row-->
+
+    </div>
+    <!--booklist-wrap-->
+
+    {% include "includes/books_category.html" %}
+
+
+
+  </div>
+  <!--row-->
+</div>
+
+
+
+{% endblock %}

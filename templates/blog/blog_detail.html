@@ -1,0 +1,83 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }} {{ object.title }} {% endblock %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="blog" %}
+{% endblock %}
+
+{% block container %}
+
+<div class="div-margin"></div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9 col-lg-9 col-sm-push-3 single-book-wrap">
+      <div class="row">
+          <div class="col-md-11 col-sm-11 col-xs-11 col-md-offset-1">
+              <div class="blog-post">
+    
+                <div class="item-image">
+                  <a href="">
+                    <img src="{{ object.image.url }}">
+                  </a>
+                  <div class="overlay"></div>
+                </div>
+                <ul class="list-inline">
+                  <li><i class="fa fa-user"></i>{{ object.writter }}</li>
+                  <li><span class="meta-separator">|</span><i class="fa fa-calendar "></i>{{ object.created_at|date:"M d,Y" }}</li>
+                  <li><span class="meta-separator">|</span><i class="fa fa-folder-open "></i>{{ object.created_at|date:"M d,Y" }}</li>
+                </ul>
+                <div class="blog-info">
+                  <h3>{{ object.title }}</h3>
+                  <p>{{ object.content }}</p>
+                  
+                </div>
+    
+              </div><!-- blog-post  -->
+    
+     <div class="row reviews-tab">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Reviews</a></li> 
+            <li><a data-toggle="tab" href="#detail">Details</a></li>  
+        </ul>
+          
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                {% include 'includes/commentbox.html'  %}
+            </div>
+            <div id="detail" class="tab-pane fade">
+              <div  style="text-align:center">
+              <h4>About This Book</h4>
+              <span class="center-line"></span>
+            </div>
+              {{ object.content }}
+            </div>
+            
+          </div>
+          
+     </div> 
+
+
+  
+
+    </div>
+  </div>
+  
+
+    </div>
+    <!--booklist-wrap-->
+
+    {% include "includes/blog_category.html" %}
+
+  </div>
+  <!--row-->
+</div>
+
+
+
+{% endblock %}

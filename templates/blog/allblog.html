@@ -1,0 +1,108 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}Blogs {% endblock %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="blog" %}
+{% endblock %}
+
+{% block container %}
+<!--
+<div class="container-fluid" style="background-color:#d8d8d854; padding: 20px;">
+  <div class="breadcrumb-wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h4>Books</h4>
+        </div>
+        <div class="col-sm-6 hidden-xs text-right">
+          <nav>
+            <h5><a href="{% url 'home' %}">Home</a>&nbsp;/&nbsp;Shop</h5>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<div class="div-margin"></div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9 col-lg-9 col-sm-push-3 booklist-wrap">
+
+      <div class="row">
+        <div class="col-md-12">
+          <form class="select-ordering" method="get">
+            <select name="orderby" class="orderby">
+              <option value="menu_order" selected="selected">Default sorting</option>
+              <option value="popularity">Sort by popularity</option>
+            </select>
+          </form>
+          <div class="layout-switcher clearfix">
+            <div class="toggle-text">
+
+            </div>
+            <div class="toggleGrid toggle-active"><i class="fa fa-th fa-2x"></i></div>
+            <div class="toggleList"><i class="fa fa-th-list fa-2x"></i></div>
+          </div>
+          <hr class="clearfix">
+        </div>
+      </div>
+
+
+      <h4>Recently added</h4><span class="center-line"></span>
+      <div class="row text-center">
+        {% if not object_list %}
+        <h2>{ BlogList is Empty }</h2>
+        {% else %}
+        {% for blog in object_list %}
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="blog-post">
+
+            <div class="item-image">
+              <a href="">
+                <img src="{{ blog.image.url }}">
+              </a>
+              <div class="overlay"></div>
+            </div>
+            <ul class="list-inline">
+              <li><i class="fa fa-user"></i>{{ blog.writter }}</li>
+              <li><span class="meta-separator">|</span><i class="fa fa-calendar "></i>{{ blog.created_at|date:"M d,Y" }}</li>
+              <li><span class="meta-separator">|</span><i class="fa fa-folder-open "></i>{{ blog.created_at|date:"M d,Y" }}</li>
+            </ul>
+            <div class="blog-info">
+              <h3>{{ blog.title }}</h3>
+              <p>{{ blog.content|slice:":255" }}</p>
+              <a href="{% url 'blog:detail' blog.id %}" class="btn btn-primary">read more...</a>
+            </div>
+
+          </div><!-- blog-post  -->
+
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+      </div>
+      <!--row-->
+
+    </div>
+    <!--booklist-wrap-->
+
+    {% include "includes/blog_category.html" %}
+
+
+
+  </div>
+  <!--row-->
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="books" %}
+{% endblock %}
+
+{% block container %}
+
+
+
+
+
+<div class="container bill_section">
+  <div class="row">
+    <div class="col-md-5 bill_item" style="margin-bottom:45px">
+       
+            <div class="row">
+                <div class="col-md-4 col-xs-4 left">
+                    <div class="right">
+                      <img style="background-color:#ddd;" class="img-rounded " src="{{ object.image.url }}" alt="">
+                    </div>
+                </div>
+              <div class="col-md-8 col-xs-8 right">
+                  <div class="book-info-summary">
+                      <h4>{{ object.title }}</h4>
+                      <p><span>লেখক : </span><a>{{ object.Author }}</a></p>
+                      <p><span>Category : </span>{{ object.category }}</p>
+                      <h4>{{ object.language|lower }} , {{ object.publication }}</h4>
+                      
+                  </div>
+                
+              </div>
+            </div><!--second row-->
+        
+    </div>
+    <div class="col-md-7">
+          <div class="row bill_paymentform">
+            
+              <div class="panel panel-default" style="padding:30px">
+                <div class="panel-body">
+                  <form method="post" novalidate>
+                    {% csrf_token %}
+                    {% include 'includes/form.html' %}
+                    <button type="submit" class="btn btn-info btn-block">Send Request for Book</button>
+                  </form>
+                </div>
+              </div>
+            
+          </div>
+    </div>
+  </div>
+
+  
+
+</div>
+
+
+{% endblock %}

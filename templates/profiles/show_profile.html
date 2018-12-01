@@ -1,0 +1,158 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}Profile with bgpic = True {% endblock %}
+
+{% block container %}
+
+<div class="container" style="margin-top:50px">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" style="text-align:justify;">
+      <div class="row profile_top">
+        <div class="col-md-4 col-xs-12 left ">
+          <div class="right">
+            <img style="background-color:#ddd;" class="img-rounded " src="{{ user.user_profile.picture.url }}" alt="">
+          </div>
+        </div>
+        <div class="col-md-8 col-xs-12 right">
+          <h3>{{ user.user_profile.get_full_name|lower }}
+            {% if user.is_authenticated %}
+            <span><a href="{% url 'profiles:update' user.user_profile.pk %}">Edit Profile</a></span>
+            {% endif %}
+          </h3>
+          <p class="bio">{{ user.user_profile.get_bio }}</p>
+
+          <p class="follow">4 following <span>100 follower</span> </p>
+
+        </div>
+      </div>
+      <!--second row-->
+
+
+      <!-- Dynamic Tab oPtion --->
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Profiles</a></li>
+        <li><a data-toggle="tab" href="#menu1">Not Refund</a></li>
+        <li><a data-toggle="tab" href="#menu2">Pending</a></li>
+        <li><a data-toggle="tab" href="#menu3">Status</a></li>
+      </ul>
+
+      <div class="tab-content profile_booklog">
+
+        <div id="home" class="tab-pane fade in active">
+            <h5 class="alert alert-info" style="margin:10px 0">Info! ipsum dolor sit amet consectetur adipisicing elit. Consequuntur enim eos labore!</h5>
+            <table class="table table-hover">
+              <h3>Completed these books!</h3>
+              <tbody>
+                {% if not booklog %}
+                   <h4>This list is empty</h4>
+                {% else %}
+                {% for data in booklog %}
+                {% if data.status == "Refund" and data.lend_by == request.user %}
+                <tr>
+                  <td>{{ data.book }}</td>
+                  <td><a class="btn btn-info" href="{% url 'bookmanagement:detail' data.book.id %}">Details</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+        </div>
+
+        <div id="menu1" class="tab-pane fade">
+            
+          <h5 class="alert alert-info" style="margin:10px 0">Request! ipsum dolor sit amet consectetur adipisicing elit. Consequuntur enim eos labore!</h5>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Author</th>
+                <th>land from</th>
+                <th>land from</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+
+              {% for data in booklog %}
+              {% if data.status == "Not Refund" and data.lend_by == request.user %}
+              <tr>
+                <td>{{ data.book }}</td>
+                <td>{{ data.book.Author }}</td>
+                <td>{{ data.lend_from }}</td>
+                <td><a class="btn btn-info" href="{% url 'bookmanagement:detail' data.book.id %}">Details</a></td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+             
+            </tbody>
+          </table>
+        </div>
+
+        <div id="menu2" class="tab-pane fade">
+            <h5 class="alert alert-info" style="margin:10px 0">Info! ipsum dolor sit amet consectetur adipisicing elit. Consequuntur enim eos labore!</h5>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Book</th>
+                  <th>Author</th>
+                  <th>land from</th>
+                  <th>land from</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if not booklog %}
+                   <h4>This list is empty</h4>
+                {% else %}
+                {% for data in booklog %}
+                {% if data.status == "Pending" and data.lend_by == request.user %}
+                <tr>
+                  <td>{{ data.book }}</td>
+                  <td>{{ data.book.Author }}</td>
+                  <td>{{ data.lend_from }}</td>
+                  <td><a class="btn btn-info" href="{% url 'bookmanagement:detail' data.book.id %}">Details</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+              </tbody>
+            </table>
+        </div>
+
+        <div id="menu3" class="tab-pane fade">
+          
+            
+      
+
+        </div>
+
+      </div><!-- Tab content end  -->
+
+
+
+
+      
+
+    </div>
+  </div>
+  <!--row-->
+</div>
+<!--container-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

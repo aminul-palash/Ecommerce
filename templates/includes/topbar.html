@@ -1,0 +1,55 @@
+{% load thumbnail %}
+
+<div class="top-bar">
+    <div class="container">
+    <div class="row ">
+      <div class="col-sm-5 hidden-xs">
+        <div class="top-bar-socials">
+          <div id="text-2" class="top-widget widget_text">
+            <div class="textwidget">
+              <ul class="list-inline social_icon_list">
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-facebook"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-google-plus"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-linkedin"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-youtube"><i class="fa fa-youtube"></i></a></li>
+                <li><a href="#" class="social-icon social-icon-sm   si-border si-instagram"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-sm-7 text-right">
+        <div id="text-3" class="top-widget widget_text">
+          <div class="textwidget">
+            <ul class="list-inline top-dark-right">
+              <li class="hidden-sm hidden-xs"><i class="fa fa-envelope"></i> Support@mail.com</li>
+              <li class="hidden-sm hidden-xs"><i class="fa fa-phone"></i> +01 1800 453 7678</li>
+              
+                {% block topbar-right %}
+                {% if user.is_authenticated %}
+                  {% if user.is_staff %}
+                   <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                  {% endif %}
+                  <li><a href="{% url 'profiles:show_self' %}"><i class="fa fa-user"></i>{{ user.username|truncatechars:20 }}
+                  <span class="caret"></span></a></li>
+                  <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}"><i class="fa fa-lock"></i> Login</a></li>
+                <li><a href="{% url 'accounts:signup' %}"><i class="fa fa-user"></i> Sign Up</a></li>   {% endif %}
+                {% endblock %}
+
+
+
+               
+        
+       
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

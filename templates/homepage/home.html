@@ -1,0 +1,156 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+
+{% endblock %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="home" %}
+{% endblock %}
+
+
+{% block splash %}
+{% include "includes/slider.html"%}
+{% endblock splash %}
+
+{% block container %}
+
+<div class="container objectives">
+  <div class="row  ">
+    <div class="col-md-12  ">
+      <div class="center-heading">
+        <h2>What we offer</h2><span class="center-line"></span>
+        <p class="lead"></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class='text-center'><i class="fa fa-book"></i></div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam
+        Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos
+        aperiam Lorem ipsum
+      </div>
+
+    </div>
+    <div class="col-md-4">
+      <div class="text-center"><i class="fa fa-newspaper-o"></i></div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam
+        Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos
+        aperiam Lorem ipsum
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center"><i class="fa fa-rss"></i></div>
+      <div class="content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam
+        Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos
+        aperiam Lorem ipsum
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% include "homepage/bookshowcase.html" %}
+{% include "homepage/blogsection.html" %}
+
+<div class="container" style="margin-top:100px"></div>
+
+<div class="container-fluid about-section">
+  
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 content">
+          <div class="center-heading">
+              <h2>About Us</h2><span class="center-line"></span>
+              <p class="lead"></p>
+            </div>
+        <div class="">  
+          Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam Lorem ipsum Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem aspernatur expedita veritatis architecto a quidem molestiae ipsum voluptas laborum! Tempore laboriosam in, delectus sit ratione ab doloremque culpa doloribus sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam
+          Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam Lorem ipsum Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem aspernatur expedita veritatis architecto a quidem molestiae ipsum voluptas laborum! Tempore laboriosam in, delectus sit ratione ab doloremque culpa doloribus sunt.Lorem ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam
+          Lorem ipsum dolor sit amet consectetur adipisicing ipsum dolor sit amet consectetur adipisicing elit.ab eos aperiam Lorem ipsum Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem aspernatur expedita veritatis architecto a quidem molestiae ipsum voluptas laborum! Tempore laboriosam in, delectus sit ratione ab doloremque culpa doloribus sunt.
+        </div>
+      </div>
+    </div>
+ 
+</div><!--about-section-->
+
+
+<div class="container" style="margin-top:100px">
+
+
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio ipsum temporibus totam unde eaque sapiente ea
+    numquam, voluptatibus aliquam expedita deserunt veritatis nisi exercitationem non modi, magni sequi qui beatae.
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus maxime eveniet, quisquam officia libero numquam
+    necessitatibus deserunt laudantium doloremque aliquam dolor exercitationem repudiandae voluptatem quos aperiam
+    quidem rem rerum earum? Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> <br> Delectus dolore
+    doloremque quisquam distinctio rerum eos sint perspiciatis veniam voluptates expedita ea aliquid, atque non error
+    ullam dicta repellat cupiditate debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat, vel
+    id eveniet, repellendus aliquid obcaecati vero nulla voluptates quo minima commodi maxime illum, temporibus earum.
+    Officia ipsa et placeat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eius dolor, reiciendis unde
+    nihil officia sapiente non quis consequuntur mollitia rem error odio autem maxime? Maxime alias asperiores nostrum
+    aliquam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam impedit sint soluta, ducimus, deserunt
+    ratione iure perferendis est ex ea ad dolore dolorum harum nostrum quae aut hic corporis aliquid? Lorem ipsum dolor
+    sit amet, consectetur adipisicing elit. <br> <br> Id nostrum sequi rem tenetur doloribus vitae similique iste atque
+    itaque, ex ipsam enim provident impedit numquam quibusdam nam necessitatibus delectus quaerat! Lorem ipsum dolor
+    sit amet consectetur adipisicing elit. Reprehenderit pariatur debitis aperiam distinctio, aliquid nobis praesentium
+    autem dignissimos! Eveniet error culpa, aut officia corrupti nostrum omnis aliquam nemo ex! Dolor? Lorem ipsum
+    dolor sit amet consectetur, adipisicing elit. Voluptas sit libero reprehenderit cupiditate? Inventore qui rerum
+    esse ea. Rerum obcaecati, reprehenderit voluptatem atque veniam harum officia reiciendis rem esse iusto. Lorem
+    ipsum dolor sit, amet consectetur adipisicing elit. Repellat dolor voluptatum vitae et ratione nam quas porro, quis
+    dolorem harum velit laudantium culpa fugiat quod! Recusandae fugit in ipsum error! Lorem ipsum dolor sit, amet
+    consectetur adipisicing elit. Magni aliquid consequuntur quisquam exercitationem beatae laborum. Veniam odit saepe
+    obcaecati reprehenderit quisquam, nisi incidunt nemo excepturi nesciunt debitis perferendis ipsam voluptate! <br>
+    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aliquam consectetur non amet sunt neque nisi
+    quasi, commodi, harum ab est animi? Fuga non qui culpa odit dolore minima. Soluta? Lorem ipsum dolor, sit amet
+    consectetur adipisicing elit. Voluptatem voluptatibus nam eius unde iusto? Aut consectetur corrupti, fugiat, neque
+    a commodi sint veritatis non repellendus quod animi rerum nihil pariatur. Lorem ipsum dolor sit, amet consectetur
+    adipisicing elit. Adipisci consectetur ipsam id enim officiis, eaque quae dolor rerum perspiciatis ad, eum suscipit
+    molestias consequuntur modi qui autem itaque praesentium cum! Lorem, ipsum dolor sit amet consectetur adipisicing
+    elit. Facilis at sunt laboriosam incidunt aut doloribus enim omnis inventore distinctio libero, porro aspernatur,
+    sit nulla quod perferendis, molestiae adipisci tempora sequi. <br> <br> Delectus dolore doloremque quisquam
+    distinctio rerum eos sint perspiciatis veniam voluptates expedita ea aliquid, atque non error ullam dicta repellat
+    cupiditate debitis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fugiat, vel id eveniet,
+    repellendus aliquid obcaecati vero nulla voluptates quo minima commodi maxime illum, temporibus earum. Officia ipsa
+    et placeat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eius dolor, reiciendis unde nihil officia
+    sapiente non quis consequuntur mollitia rem error odio autem maxime? Maxime alias asperiores nostrum aliquam? Lorem
+    ipsum dolor sit amet consectetur adipisicing elit. Ullam impedit sint soluta, ducimus, deserunt ratione iure
+    perferendis est ex ea ad dolore dolorum harum nostrum quae aut hic corporis aliquid? Lorem ipsum dolor sit amet,
+    consectetur adipisicing elit. <br> <br> Id nostrum sequi rem tenetur doloribus vitae similique iste atque itaque,
+    ex ipsam enim provident impedit numquam quibusdam nam necessitatibus delectus quaerat! Lorem ipsum dolor sit amet
+    consectetur adipisicing elit. Reprehenderit pariatur debitis aperiam distinctio, aliquid nobis praesentium autem
+    dignissimos! Eveniet error culpa, aut officia corrupti nostrum omnis aliquam nemo ex! Dolor? Lorem ipsum dolor sit
+    amet consectetur, adipisicing elit. Voluptas sit libero reprehenderit cupiditate? Inventore qui rerum esse ea.
+    Rerum obcaecati, reprehenderit voluptatem atque veniam harum officia reiciendis rem esse iusto. Lorem ipsum dolor
+    sit, amet consectetur adipisicing elit. Repellat dolor voluptatum vitae et ratione nam quas porro, quis dolorem
+    harum velit laudantium culpa fugiat quod! Recusandae fugit in ipsum error! Lorem ipsum dolor sit, amet consectetur
+    adipisicing elit. Magni aliquid consequuntur quisquam exercitationem beatae laborum. Veniam odit saepe obcaecati
+    reprehenderit quisquam, nisi incidunt nemo excepturi nesciunt debitis perferendis ipsam voluptate! <br> <br> Lorem
+    ipsum dolor sit amet consectetur adipisicing elit. Minus aliquam consectetur non amet sunt neque nisi quasi,
+    commodi, harum ab est animi? Fuga non qui culpa odit dolore minima. Soluta? Lorem ipsum dolor, sit amet consectetur
+    adipisicing elit. Voluptatem voluptatibus nam eius unde iusto? Aut consectetur corrupti, fugiat, neque a commodi
+    sint veritatis non repellendus quod animi rerum nihil pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing
+    elit. Adipisci consectetur ipsam id enim officiis, eaque quae dolor rerum perspiciatis ad, eum suscipit molestias
+    consequuntur modi qui autem itaque praesentium cum! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    Facilis at sunt laboriosam incidunt aut doloribus enim omnis inventore distinctio libero, porro aspernatur, sit
+    nulla quod perferendis, molestiae adipisci tempora sequi. </p>
+
+</div>
+
+
+{% endblock container %}
+
+{% block scripts %}
+
+{% endblock scripts %}

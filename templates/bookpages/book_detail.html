@@ -1,0 +1,74 @@
+{% extends "homepage/base.html" %}
+
+{% load staticfiles %}
+{% load thumbnail %}
+
+{% block title %}{{ block.super }}Profile with bgpic = True {% endblock %}
+
+{% block navbar-right %}
+{% include "homepage/_navbar.html" with active_link="books" %}
+{% endblock %}
+
+{% block container %}
+
+<div class="div-margin"></div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9 col-sm-9 col-lg-9 col-sm-push-3 single-book-wrap">
+      <div class="row">
+     <div class="col-md-4 col-sm-4">
+        <div class="item-image">
+            <a href="">
+              <img src="{{ object.image.url }}">
+            </a>
+        </div>
+
+     </div>
+     <div class="col-md-7 col-sm-8">
+        <div class="book-info-summary">
+              <h2>{{ object.title }}</h2>
+              <p><span>লেখক : </span><a>{{ object.Author }}</a></p>
+              <p><span>Category : </span>{{ object.category }}</p>
+              <h4>{{ object.language|lower }} , {{ object.publication }}</h4>
+              <p class="detail">{{ object.details }}</p>
+            <a href="{% url 'billing:bookbill' object.id %}" class="btn btn-info">Request</a>
+          </div>
+     </div>
+    </div>
+    
+     <div class="row reviews-tab">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">Reviews</a></li> 
+            <li><a data-toggle="tab" href="#detail">Details</a></li>  
+        </ul>
+          
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                {% include 'includes/commentbox.html'  %}
+            </div>
+            <div id="detail" class="tab-pane fade">
+              <div  style="text-align:center">
+              <h4>About This Book</h4>
+              <span class="center-line"></span>
+            </div>
+              {{ object.details }}
+            </div>
+            
+          </div>
+          
+     </div> 
+
+    </div>
+    <!--booklist-wrap-->
+
+    {% include "includes/books_category.html" %}
+
+  </div>
+  <!--row-->
+</div>
+
+
+
+{% endblock %}

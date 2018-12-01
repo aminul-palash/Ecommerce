@@ -1,0 +1,62 @@
+{% load staticfiles %}
+
+
+
+
+<div class="container-fluid bookcontainer">
+  <div class="container">
+
+    <div class="row  ">
+      <div class="col-md-12  ">
+        <div class="center-heading">
+          <h2>Latest Books</h2><span class="center-line"></span>
+          <p class="lead"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="book-slider owl-carousel owl-theme">
+        {% if not object_list %}
+           <h2>List is Empty</h2>
+        {% else %}
+        {% for book in object_list %}
+        <div class="item">
+            <div class="booklist-item">
+
+                <div class="item-image">
+                  <a href="">
+                    <img src="{{ book.image.url }}">
+                  </a>
+                  <div class="overlay">
+                      <div class="text">
+                        <a href="{% url 'bookmanagement:detail' book.id %}"><button class="info" data-toggle="modal" data-target="#modal3">details
+                      </button></a>
+                      <a href="#"><i class="fa fa-plus"></i></a>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="book-info">
+                  <a href="{% url 'bookmanagement:detail' book.id %}"><h4><span>{{ book.title }}</span></h4></a>
+                  <a><p><span>লেখক :</span>{{ book.Author }}</p></a> 
+                  
+                  
+                </div>
+      
+              </div>
+          </div>
+        {% endfor %}
+        {% endif %}    
+      </div><!--book-slider-->
+    </div><!--row-->
+
+    <div class='row'>
+      <div class="col-md-12 text-center">
+        <a href="{% url 'bookmanagement:booklist' %}"><button class="btn btn-info"><i class="fa fa-bars"></i> Load More Books</button></a>
+      </div>
+    </div>
+
+
+  </div>
+</div><!--bookcontainer-->
